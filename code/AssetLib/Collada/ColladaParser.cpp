@@ -1746,6 +1746,8 @@ size_t ColladaParser::ReadPrimitives(XmlNode &node, Mesh &pMesh, std::vector<Inp
         std::string v;
         XmlParser::getValueAsString(node, v);
         const char *content = v.c_str();
+        // skip whitespace at start
+        SkipSpacesAndLineEnd(&content);
         while (*content != 0) {
             // read a value.
             // Hack: (thom) Some exporters put negative indices sometimes. We just try to carry on anyways.
